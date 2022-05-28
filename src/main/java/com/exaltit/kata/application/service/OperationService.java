@@ -15,7 +15,7 @@ public class OperationService implements GetOperationUseCase {
     }
 
     @Override
-    public List<Operation> findOperations(String id) {
-        return null;
+    public List<Operation> findOperations(String accountId) {
+        return getOperationPort.findAll(accountId);
     }
 }
