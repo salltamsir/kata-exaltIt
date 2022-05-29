@@ -167,13 +167,11 @@ class AccountServiceTest {
     @Test
     void should_throw_InvalidAmountException(){
         //Given
-        Account account = createAccount() ;
-        String message = "Transaction amount not valid";
+        String message = "Amount should be greater than 0 but is [-200]";
         Exception exception;
-        when(getAccountPort.findById(anyString())).thenReturn(Optional.of(account));
 
         //When
-        exception = assertThrows(AccountNotFoundException.class, ()-> {
+        exception = assertThrows(InvalidAmountException.class, ()-> {
             accountService.withdraw("test",BigDecimal.valueOf(-200));
         });
 

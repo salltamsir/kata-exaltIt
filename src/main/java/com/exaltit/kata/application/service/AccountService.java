@@ -1,9 +1,6 @@
 package com.exaltit.kata.application.service;
 
-import com.exaltit.kata.application.domain.Account;
-import com.exaltit.kata.application.domain.AccountNotFoundException;
-import com.exaltit.kata.application.domain.Operation;
-import com.exaltit.kata.application.domain.OperationType;
+import com.exaltit.kata.application.domain.*;
 import com.exaltit.kata.application.port.*;
 
 import java.math.BigDecimal;
@@ -53,6 +50,10 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
     @Override
     public Operation withdraw(String accountId, BigDecimal transactionAmount) {
         LOG.log(Level.INFO, "Starting withdraw for account : ["+accountId+ "]");
+
+        if(transactionAmount.compareTo(BigDecimal.ZERO) <= 0){
+            throw new InvalidAmountException(transactionAmount);
+        }
 
         Account account = getAccountPort.findById(accountId)
                 .orElseThrow(()-> new AccountNotFoundException(accountId));
