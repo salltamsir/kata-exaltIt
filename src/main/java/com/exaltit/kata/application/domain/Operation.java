@@ -14,8 +14,6 @@ public  class Operation {
     private BigDecimal previousBalance;
     private BigDecimal newBalance;
     private BigDecimal transactionAmount;
-
-
     private OperationStatus operationStatus;
 
     public Operation(String accountId, LocalDateTime date, OperationType operationType, BigDecimal previousBalance, BigDecimal newBalance, BigDecimal transactionAmount, boolean isSucess) {
@@ -25,7 +23,7 @@ public  class Operation {
         this.previousBalance = previousBalance;
         this.newBalance = newBalance;
         this.transactionAmount = transactionAmount;
-        this.status(isSucess);
+        this.computeStatus(isSucess);
     }
 
     @Override
@@ -48,10 +46,9 @@ public  class Operation {
     }
 
     public Operation(){
-
     }
 
-    public void status(boolean status){
+    public void computeStatus(Boolean status){
         if(status){
             this.operationStatus = OperationStatus.SUCCESS;
         }
