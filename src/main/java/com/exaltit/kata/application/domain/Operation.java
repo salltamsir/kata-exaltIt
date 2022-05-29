@@ -23,7 +23,7 @@ public  class Operation {
         this.previousBalance = previousBalance;
         this.newBalance = newBalance;
         this.transactionAmount = transactionAmount;
-        this.status(isSucess);
+        this.computeStatus(isSucess);
     }
 
     @Override
@@ -48,7 +48,7 @@ public  class Operation {
     public Operation(){
     }
 
-    public void status(boolean status){
+    public void computeStatus(Boolean status){
         if(status){
             this.operationStatus = OperationStatus.SUCCESS;
         }

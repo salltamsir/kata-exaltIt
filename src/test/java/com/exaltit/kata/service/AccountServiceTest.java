@@ -164,6 +164,25 @@ class AccountServiceTest {
 
     }
 
+    @Test
+    void should_throw_InvalidAmountException(){
+        //Given
+        Account account = createAccount() ;
+        String message = "Transaction amount not valid";
+        Exception exception;
+        when(getAccountPort.findById(anyString())).thenReturn(Optional.of(account));
+
+        //When
+        exception = assertThrows(AccountNotFoundException.class, ()-> {
+            accountService.withdraw("test",BigDecimal.valueOf(-200));
+        });
+
+        //Then
+        assertTrue(exception.getMessage().contains(message));
+
+
+    }
+
 
 
 }
