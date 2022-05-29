@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/operations")
 public class OperationController {
 
     private final GetOperationUseCase getOperationUseCase;
+
+    private static final Logger LOG = Logger.getLogger(OperationController.class.getName());
+
 
     public OperationController(GetOperationUseCase getOperationUseCase) {
         this.getOperationUseCase = getOperationUseCase;
@@ -22,6 +27,7 @@ public class OperationController {
 
     @GetMapping(value = "/account/{id}")
     public List<Operation> findOperations(@PathVariable final String id){
+        LOG.log(Level.INFO, "Get operations request for account : ["+id+ "]");
         return getOperationUseCase.findOperations(id);
     }
 }

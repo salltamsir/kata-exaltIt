@@ -8,12 +8,17 @@ import com.exaltit.kata.application.port.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceUseCase {
 
     private GetAccountPort getAccountPort;
     private SaveAccountPort saveAccountPort;
     private SaveOperationPort saveOperationPort;
+
+    private static final Logger LOG = Logger.getLogger(AccountService.class.getName());
+
 
     public AccountService(GetAccountPort getAccountPort, SaveAccountPort saveAccountPort, SaveOperationPort saveOperationPort) {
         this.getAccountPort = getAccountPort;
@@ -24,6 +29,8 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
 
     @Override
     public Operation deposit(String accountId, BigDecimal transactionAmount) {
+        LOG.log(Level.INFO, "Starting deposit for account : ["+accountId+ "]");
+
         Account account = getAccountPort.findById(accountId)
                 .orElseThrow(()-> new AccountNotFoundException(accountId));
 
@@ -36,12 +43,17 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
         saveAccountPort.save(account);
         saveOperationPort.save(operation);
 
+        LOG.log(Level.INFO, "Deposit done for account : ["+accountId+ "]");
+
+
         return operation;
 
     }
 
     @Override
     public Operation withdraw(String accountId, BigDecimal transactionAmount) {
+        LOG.log(Level.INFO, "Starting withdraw for account : ["+accountId+ "]");
+
         Account account = getAccountPort.findById(accountId)
                 .orElseThrow(()-> new AccountNotFoundException(accountId));
 
@@ -53,6 +65,9 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
             saveAccountPort.save(account);
         }
         saveOperationPort.save(operation);
+
+        LOG.log(Level.INFO, "Withdraw "+operation.getOperationStatus()+" for account : ["+accountId+ "]");
+
         return operation;
     }
 
