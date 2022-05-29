@@ -14,8 +14,6 @@ public  class Operation {
     private BigDecimal previousBalance;
     private BigDecimal newBalance;
     private BigDecimal transactionAmount;
-
-
     private OperationStatus operationStatus;
 
     public Operation(String accountId, LocalDateTime date, OperationType operationType, BigDecimal previousBalance, BigDecimal newBalance, BigDecimal transactionAmount, boolean isSucess) {
@@ -48,7 +46,6 @@ public  class Operation {
     }
 
     public Operation(){
-
     }
 
     public void status(boolean status){
