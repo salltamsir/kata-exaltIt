@@ -28,6 +28,10 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
     public Operation deposit(String accountId, BigDecimal transactionAmount) {
         LOG.log(Level.INFO, "Starting deposit for account : ["+accountId+ "]");
 
+        if(transactionAmount.compareTo(BigDecimal.ZERO) <= 0){
+            throw new InvalidAmountException(transactionAmount);
+        }
+
         Account account = getAccountPort.findById(accountId)
                 .orElseThrow(()-> new AccountNotFoundException(accountId));
 

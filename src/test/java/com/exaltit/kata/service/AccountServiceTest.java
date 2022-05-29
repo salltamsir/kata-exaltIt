@@ -181,6 +181,23 @@ class AccountServiceTest {
 
     }
 
+    @Test
+    void should_throw_InvalidAmountException_Deposit(){
+        //Given
+        String message = "Amount should be greater than 0 but is [0]";
+        Exception exception;
+
+        //When
+        exception = assertThrows(InvalidAmountException.class, ()-> {
+            accountService.deposit("test",BigDecimal.valueOf(0));
+        });
+
+        //Then
+        assertTrue(exception.getMessage().contains(message));
+
+
+    }
+
 
 
 }
