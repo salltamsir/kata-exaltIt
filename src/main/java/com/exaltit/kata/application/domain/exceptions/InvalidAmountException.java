@@ -1,4 +1,4 @@
-package com.exaltit.kata.application.domain;
+package com.exaltit.kata.application.domain.exceptions;
 
 import java.math.BigDecimal;
 

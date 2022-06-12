@@ -1,8 +1,13 @@
 package com.exaltit.kata.application.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@NoArgsConstructor
+@Data
 public class Account {
 
     private String id;
@@ -27,25 +32,5 @@ public class Account {
         balance = balance.add(amount);
     }
 
-    public BigDecimal getBalance(){
-        return this.balance;
-    }
-    public String getId(){
-        return id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return id.equals(account.id) &&
-                balance.equals(account.balance);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, balance);
-    }
 
 }

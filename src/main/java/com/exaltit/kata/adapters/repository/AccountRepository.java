@@ -1,8 +1,8 @@
 package com.exaltit.kata.adapters.repository;
 
 import com.exaltit.kata.application.domain.Account;
-import com.exaltit.kata.application.port.GetAccountPort;
-import com.exaltit.kata.application.port.SaveAccountPort;
+import com.exaltit.kata.application.port.out.GetAccountPort;
+import com.exaltit.kata.application.port.out.SaveAccountPort;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

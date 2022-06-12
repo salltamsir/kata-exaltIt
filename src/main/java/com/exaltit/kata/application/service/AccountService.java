@@ -1,11 +1,17 @@
 package com.exaltit.kata.application.service;
 
 import com.exaltit.kata.application.domain.*;
-import com.exaltit.kata.application.port.*;
+import com.exaltit.kata.application.domain.exceptions.AccountNotFoundException;
+import com.exaltit.kata.application.domain.exceptions.InvalidAmountException;
+import com.exaltit.kata.application.port.in.BalanceUseCase;
+import com.exaltit.kata.application.port.in.DepositUseCase;
+import com.exaltit.kata.application.port.in.WithdrawUseCase;
+import com.exaltit.kata.application.port.out.GetAccountPort;
+import com.exaltit.kata.application.port.out.SaveAccountPort;
+import com.exaltit.kata.application.port.out.SaveOperationPort;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceUseCase {
@@ -26,7 +32,7 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
 
     @Override
     public Operation deposit(String accountId, BigDecimal transactionAmount) {
-        LOG.log(Level.INFO, "Starting deposit for account : ["+accountId+ "]");
+        LOG.info("Starting deposit for account : ["+accountId+ "]");
 
         if(transactionAmount.compareTo(BigDecimal.ZERO) <= 0){
             throw new InvalidAmountException(transactionAmount);
@@ -44,7 +50,7 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
         saveAccountPort.save(account);
         saveOperationPort.save(operation);
 
-        LOG.log(Level.INFO, "Deposit done for account : ["+accountId+ "]");
+        LOG.info("Deposit done for account : ["+accountId+ "]");
 
 
         return operation;
@@ -53,7 +59,7 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
 
     @Override
     public Operation withdraw(String accountId, BigDecimal transactionAmount) {
-        LOG.log(Level.INFO, "Starting withdraw for account : ["+accountId+ "]");
+        LOG.info("Starting withdraw for account : ["+accountId+ "]");
 
         if(transactionAmount.compareTo(BigDecimal.ZERO) <= 0){
             throw new InvalidAmountException(transactionAmount);
@@ -71,7 +77,7 @@ public class AccountService implements DepositUseCase, WithdrawUseCase, BalanceU
         }
         saveOperationPort.save(operation);
 
-        LOG.log(Level.INFO, "Withdraw "+operation.getOperationStatus()+" for account : ["+accountId+ "]");
+        LOG.info("Withdraw "+operation.getOperationStatus()+" for account : ["+accountId+ "]");
 
         return operation;
     }

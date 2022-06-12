@@ -1,7 +1,7 @@
 package com.exaltit.kata.service;
 
 import com.exaltit.kata.application.domain.Operation;
-import com.exaltit.kata.application.port.GetOperationPort;
+import com.exaltit.kata.application.port.out.GetOperationPort;
 import com.exaltit.kata.application.service.OperationService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

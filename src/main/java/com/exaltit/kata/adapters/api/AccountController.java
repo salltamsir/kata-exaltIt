@@ -1,9 +1,9 @@
 package com.exaltit.kata.adapters.api;
 
 import com.exaltit.kata.application.domain.Operation;
-import com.exaltit.kata.application.port.BalanceUseCase;
-import com.exaltit.kata.application.port.DepositUseCase;
-import com.exaltit.kata.application.port.WithdrawUseCase;
+import com.exaltit.kata.application.port.in.BalanceUseCase;
+import com.exaltit.kata.application.port.in.DepositUseCase;
+import com.exaltit.kata.application.port.in.WithdrawUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

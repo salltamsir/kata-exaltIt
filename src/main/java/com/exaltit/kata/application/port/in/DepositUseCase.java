@@ -1,4 +1,4 @@
-package com.exaltit.kata.application.port;
+package com.exaltit.kata.application.port.in;
 
 
 import com.exaltit.kata.application.domain.Operation;

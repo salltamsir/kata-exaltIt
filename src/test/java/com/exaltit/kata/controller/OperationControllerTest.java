@@ -1,10 +1,10 @@
 package com.exaltit.kata.controller;
 
 import com.exaltit.kata.application.domain.Operation;
-import com.exaltit.kata.application.port.BalanceUseCase;
-import com.exaltit.kata.application.port.DepositUseCase;
-import com.exaltit.kata.application.port.GetOperationUseCase;
-import com.exaltit.kata.application.port.WithdrawUseCase;
+import com.exaltit.kata.application.port.in.BalanceUseCase;
+import com.exaltit.kata.application.port.in.DepositUseCase;
+import com.exaltit.kata.application.port.in.GetOperationUseCase;
+import com.exaltit.kata.application.port.in.WithdrawUseCase;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

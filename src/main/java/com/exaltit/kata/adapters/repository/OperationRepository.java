@@ -1,8 +1,8 @@
 package com.exaltit.kata.adapters.repository;
 
 import com.exaltit.kata.application.domain.Operation;
-import com.exaltit.kata.application.port.GetOperationPort;
-import com.exaltit.kata.application.port.SaveOperationPort;
+import com.exaltit.kata.application.port.out.GetOperationPort;
+import com.exaltit.kata.application.port.out.SaveOperationPort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

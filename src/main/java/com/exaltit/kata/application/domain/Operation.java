@@ -1,9 +1,13 @@
 package com.exaltit.kata.application.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Data
 public  class Operation {
 
 
@@ -45,8 +49,6 @@ public  class Operation {
         return Objects.hash(getId(), getAccountId(), getDate(), getOperationType(), getPreviousBalance(), getNewBalance(), getTransactionAmount());
     }
 
-    public Operation(){
-    }
 
     public void computeStatus(Boolean status){
         if(status){
@@ -57,69 +59,6 @@ public  class Operation {
         }
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDateTime date) {
-        this.date = date;
-    }
-
-    public OperationType getOperationType() {
-        return operationType;
-    }
-
-    public void setOperationType(OperationType operationType) {
-        this.operationType = operationType;
-    }
-
-    public BigDecimal getPreviousBalance() {
-        return previousBalance;
-    }
-
-    public void setPreviousBalance(BigDecimal previousBalance) {
-        this.previousBalance = previousBalance;
-    }
-
-    public BigDecimal getNewBalance() {
-        return newBalance;
-    }
-
-    public void setNewBalance(BigDecimal newBalance) {
-        this.newBalance = newBalance;
-    }
-
-    public BigDecimal getTransactionAmount() {
-        return transactionAmount;
-    }
-
-    public void setTransactionAmount(BigDecimal transactionAmount) {
-        this.transactionAmount = transactionAmount;
-    }
-
-    public OperationStatus getOperationStatus() {
-        return operationStatus;
-    }
-
-    public void setOperationStatus(OperationStatus operationStatus) {
-        this.operationStatus = operationStatus;
-    }
 }
 
 

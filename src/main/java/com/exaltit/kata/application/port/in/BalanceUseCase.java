@@ -1,4 +1,4 @@
-package com.exaltit.kata.application.port;
+package com.exaltit.kata.application.port.in;
 
 import java.math.BigDecimal;
 
